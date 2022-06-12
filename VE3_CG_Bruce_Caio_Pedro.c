@@ -159,6 +159,7 @@ void get_senha(CADASTRO *pessoa){/*Menu de escolha para tipo de entrada de senha
         }
         else{
             puts("Entrada invalida. Tente novamente!");
+            continuar();
             continue;
         }
     }
@@ -363,13 +364,18 @@ void print_finalidades(CADASTRO pessoa, int contador){/* Mostra ao usuario as fi
 
 int escolher_finalidade(int cont){/*Retorna o numero da finalidade escolhida pelo usuario */
     int escolha = -1;
-    while(escolha == -1){
+    while(1){
         scanf(" %d", &escolha);
         fflush(stdin);
         if (escolha<1 || escolha>cont){
             puts("Valor invalido. Tente novamente!");
+            continuar();
+            limpar_tela();
+            printf("Escolha um numero relativo a senha que deseja visualizar:\n\n");
+            listar_finalidades();
             continue;
         }
+        break;
     }
     return escolha;
 }
